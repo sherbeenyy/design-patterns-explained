@@ -1,57 +1,58 @@
 # Open/Closed Principle (OCP)
 
-> **"Software entities should be open for extension, but closed for modification."**
+> "Software entities should be open for extension, but closed for modification."
 
 ---
 
 ## What is OCP?
-The **Open/Closed Principle** says that your classes, modules, and functions should be **extensible without changing their existing source code**.
-
-If you want to add new functionality, you should **add new code**, not change old code that’s already working.
+The **Open/Closed Principle** means your code should be:
+- **Open for extension** → You can add new behavior without touching old code.
+- **Closed for modification** → You shouldn’t have to change already working code just to add new features.
 
 ---
 
-## Why it matters
-- **Keeps old code safe** → You don't break what already works.
-- **Easy to add new features** → Just add new classes or methods.
-- **Encourages clean design** → Fewer `if`/`switch` blocks.
+## Example Scenario
+We want to build a small program that draws different shapes:  
+- Initially, we have a `Circle` and a `Square`.  
+- Later, we may want to add more shapes, like a `Triangle`.
+
+The question is: How should we design our code so that adding new shapes is easy and safe?
 
 ---
 
 ## Bad Example – Violating OCP
 See [`bad_example.cpp`](./bad_example.cpp)
 
-**What's wrong here:**
-- There is a `drawShapes()` function that checks `ShapeType` using `if`/`else`.
-- If we add a new shape like a `Triangle`, we **must modify** `drawShapes()` to handle it.
-- This means changing tested, working code whenever we add something new.
+**How it works:**
+- We have a `Shape` class with a `ShapeType` enum (CIRCLE, SQUARE).
+- We have `Circle` and `Square` classes storing their type.
+- In `drawShapes()`, we check the type with `if`/`else` and decide how to draw.
 
-**Why it’s bad:**
-- Risk of introducing new bugs in old logic.
-- The function grows bigger and harder to maintain.
-- Violates the "closed for modification" part of OCP.
+**The problem:**
+- If we add a `Triangle`, we must edit the `drawShapes()` function and add a new `if` branch.
+- This means modifying existing, tested code every time we add something new.
+- The function grows larger and harder to maintain.
 
 ---
 
 ## Good Example – Following OCP
 See [`good_example.cpp`](./good_example.cpp)
 
-**What's better here:**
-- We define a `Shape` interface (abstract class) with a `draw()` method.
-- Each shape (`Circle`, `Square`, `Triangle`) **implements** its own `draw()` method.
-- Adding a new shape means **adding a new class**, not touching old code.
+**How it works:**
+- We have an abstract `Shape` class with a `draw()` method.
+- Each shape (`Circle`, `Square`, `Triangle`) implements its own `draw()` method.
+- `drawShapes()` just calls `draw()` on each shape — no `if` statements needed.
 
-**Why it’s good:**
-- Existing code remains unchanged when adding new features.
-- No big `if`/`else` checks — the code is simpler.
-- The program is easier to extend and maintain.
+**The benefit:**
+- Adding a new shape (e.g., `Triangle`) means only creating a new class.
+- No changes to old code → fewer bugs, easier to maintain.
+- Code is cleaner and more flexible.
 
 ---
 
 ## Key Takeaways
-1. **Don't** change old, working code just to add new features.  
-2. Use **abstraction** (interfaces / abstract classes) so new things can be added easily.  
-3. Replace `if`/`switch` on types with **polymorphism**.
+1. If you see a big `if`/`switch` checking types, you might be violating OCP.  
+2. Use abstraction so new functionality is added by writing new code, not modifying old code.  
+3. Following OCP helps keep your code safe, clean, and easy to extend.
 
 ---
-
