@@ -17,7 +17,7 @@ My goal is to provide clear notes and practical code to help anyone understand t
 The `SOLID` folder is where you will find the core principles of software design:
 
 - For **each principle**, you will find:
-  - A markdown file named `wtf_is_that?.md` (e.g., `single_responsibility_wtf_is_that.md`), which contains **short notes and a brief explanation** of the principle.
+  - A markdown file named `wtf_is_that?.md` (e.g., `Single_Responsibility\wtf_is_that?.md`), which contains **short notes and a brief explanation** of the principle.
   - Two C++ code files:
     - `bad_example.cpp` — shows a common **wrong or anti-pattern** usage.
     - `good_example.cpp` — demonstrates the **correct application** of the principle with clear code examples.
