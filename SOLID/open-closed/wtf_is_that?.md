@@ -1,4 +1,4 @@
-# 🔓 Open/Closed Principle (OCP)
+# Open/Closed Principle (OCP)
 
 > **"Software entities should be open for extension, but closed for modification."**
 
