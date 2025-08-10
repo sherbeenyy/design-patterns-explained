@@ -35,7 +35,7 @@ See [`good_example.cpp`](./good_example.cpp)
 
 **How it works:**
 - We create an abstract `IInputDevice` interface.
-- `Keyboard` and `TouchScreen` both implement `IInputDevice`.
+- `Keyboard` and `Mouse` both implement `IInputDevice`.
 - `Computer` depends on `IInputDevice` instead of a specific class.
 - We inject the dependency from the outside (constructor injection).
 
