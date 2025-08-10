@@ -1,5 +1,20 @@
 # Strategy Pattern
-## Sometimes we say FUCK YOU to the inheritance
+
+## Sometimes we say "FUCK YOU" to inheritance
+
+---
+
+## What Are We Building?
+
+Imagine you are building a **payment processing program** that supports multiple payment methods like Credit Card, PayPal, and Cryptocurrency.  
+The user can select their preferred payment method, and the program will process the payment accordingly.
+
+The tricky part?  
+You want to be able to **switch payment methods at runtime** without restarting or recreating the entire payment processor object, and without bloating your code with many subclasses or complex `if-else` logic.
+
+This is where the **Strategy Pattern** shines.
+
+---
 
 ## Overview
 
@@ -45,18 +60,17 @@ With the Strategy Pattern:
 - In `main()`, you create **different objects** for each payment method
 - To switch payment methods, you create a **new object** of the desired subclass
 
+### Why this is bad:
 
-## Why this is bad:
-
-1. New object per strategy: Each time you want to switch payment methods, you must create a new object
-2. State loss risk: If PaymentProcessor held any internal state, it would be lost upon switching
-3. Less flexible: Cannot change the algorithm mid-execution on the same object
-4. Tight coupling: Adding new payment methods requires subclassing
-5. Manual memory management: Need to manage delete calls carefully
+1. **New object per strategy:** Each time you want to switch payment methods, you must create a new object
+2. **State loss risk:** If `PaymentProcessor` held any internal state, it would be lost upon switching
+3. **Less flexible:** Cannot change the algorithm mid-execution on the same object
+4. **Tight coupling:** Adding new payment methods requires subclassing
+5. **Manual memory management:** Need to manage `delete` calls carefully
 
 ---
 
-## 2. [with_example.cpp](./with_example.cpp) - Strategy Pattern Approach
+### 2. [with_example.cpp](./with_example.cpp) - Strategy Pattern Approach
 
 **Code explanation:**
 
@@ -66,31 +80,35 @@ With the Strategy Pattern:
 - Can set/change payment method dynamically using `setPaymentMethod()`
 - Context calls `process()` which delegates to current strategy
 
+### Why this is good:
 
-## Why this is good:
-
-1. Algorithms interchangeable at runtime
-2. State preservation: Context remains the same
-3. Open for extension: New strategies don't require changing existing classes
-4. Memory safety: shared_ptr manages strategy lifetime
-5. Clean code: Eliminates conditional statements
-6. Follows SOLID principles (especially OCP)
+1. **Algorithms interchangeable at runtime**
+2. **State preservation:** Context remains the same
+3. **Open for extension:** New strategies don't require changing existing classes
+4. **Memory safety:** `shared_ptr` manages strategy lifetime
+5. **Clean code:** Eliminates conditional statements
+6. **Follows SOLID principles** (especially Open/Closed Principle)
 
 ---
 
 ## Key Differences Summary
-| Feature | Without Strategy (Inheritance) | With Strategy (Pattern) |
-|---------|-------------------------------|-------------------------|
-| Algorithm change at runtime | Requires new object | Change method on existing object |
-| State preservation | Lost when switching objects | Preserved |
-| Memory management | Manual (`delete`) | Automatic (`shared_ptr`) |
-| Open/Closed Principle | Violated when adding new methods | Fully supported |
-| Code maintainability | Lower | Higher |
-| Flexibility | Low - fixed at object creation | High - swap anytime at runtime |
+
+| Feature                       | Without Strategy (Inheritance)    | With Strategy (Pattern)          |
+|------------------------------|----------------------------------|---------------------------------|
+| Algorithm change at runtime   | Requires new object               | Change method on existing object|
+| State preservation            | Lost when switching objects       | Preserved                      |
+| Memory management             | Manual (`delete`)                 | Automatic (`shared_ptr`)         |
+| Open/Closed Principle         | Violated when adding new methods  | Fully supported                 |
+| Code maintainability          | Lower                           | Higher                          |
+| Flexibility                  | Low - fixed at object creation    | High - swap anytime at runtime  |
 
 ---
 
 ## Analogy
->***Think of it like a car:*** \
->Without Strategy Pattern: Changing the algorithm is like buying a new car just to change the engine\
->With Strategy Pattern: You pop the hood and swap the engine, keeping the same car
+
+Think of it like a car:
+
+- **Without Strategy Pattern:** Changing the algorithm is like buying a new car just to change the engine.
+- **With Strategy Pattern:** You pop the hood and swap the engine, keeping the same car.
+
+---
