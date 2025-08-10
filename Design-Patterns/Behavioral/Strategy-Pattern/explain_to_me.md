@@ -26,7 +26,11 @@ In short:
 > Instead of hardcoding an algorithm inside a class, we pass it in as an object that follows a shared interface, and we can swap it at runtime.
 
 ---
+## Diagram 
 
+![Strategy Pattern Diagram](imgs/strategygeneral.png)
+
+---
 ## Why Not Just Use Inheritance?
 
 Inheritance can work if you choose your algorithm **at compile time**, but it has serious drawbacks when flexibility is required:
