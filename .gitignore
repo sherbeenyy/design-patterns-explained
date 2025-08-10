@@ -1,0 +1,46 @@
+# Compiled object files
+*.o
+*.obj
+
+# Compiled binary files
+*.exe
+*.out
+*.app
+
+# Compiled dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled static libraries
+*.a
+*.lib
+
+# Debug files
+*.pdb
+*.idb
+*.DS_Store
+
+# Build directories
+build/
+cmake-build-*/
+
+# Visual Studio files
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+.vscode/
+
+# Backup & temp files
+*~
+*.swp
+*.tmp
+*.bak
+
+# Logs
+*.log
+
+# Other OS-specific files
+.DS_Store
+Thumbs.db
