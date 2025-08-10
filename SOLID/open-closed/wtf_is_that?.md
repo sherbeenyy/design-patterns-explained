@@ -41,7 +41,7 @@ See [`good_example.cpp`](./good_example.cpp)
 **How it works:**
 - We have an abstract `Shape` class with a `draw()` method.
 - Each shape (`Circle`, `Square`, `Triangle`) implements its own `draw()` method.
-- `drawShapes()` just calls `draw()` on each shape — no `if` statements needed.
+- `drawShapes()` just calls `draw()` on each shape, no `if` statements needed.
 
 **The benefit:**
 - Adding a new shape (e.g., `Triangle`) means only creating a new class.
