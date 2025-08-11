@@ -26,11 +26,13 @@ In short:
 > Instead of hardcoding an algorithm inside a class, we pass it in as an object that follows a shared interface, and we can swap it at runtime.
 
 ---
-## Diagram 
+
+## Diagram
 
 ![Strategy Pattern Diagram](imgs/strategygeneral.png)
 
 ---
+
 ## Why Not Just Use Inheritance?
 
 Inheritance can work if you choose your algorithm **at compile time**, but it has serious drawbacks when flexibility is required:
@@ -46,6 +48,7 @@ Inheritance can work if you choose your algorithm **at compile time**, but it ha
 ## Why Strategy Is Better
 
 With the Strategy Pattern:
+
 - The context **keeps its state** and swaps algorithms dynamically
 - The algorithm is **decoupled** from the context
 - New algorithms can be added **without touching the context class**
@@ -56,9 +59,10 @@ With the Strategy Pattern:
 
 ## Understanding the Code
 
-### 1. [without_example.cpp](./without_example.cpp) - Inheritance-Based Approach 
+### 1. [without_example.cpp](./without_example.cpp) - Inheritance-Based Approach
 
 **Code explanation:**
+
 - `PaymentProcessor` is a base class with a virtual method `processPayment()`
 - Subclasses `CreditCardProcessor`, `PayPalProcessor`, and `CryptoProcessor` override `processPayment()` to provide specific payment algorithms
 - In `main()`, you create **different objects** for each payment method
@@ -97,14 +101,13 @@ With the Strategy Pattern:
 
 ## Key Differences Summary
 
-| Feature                       | Without Strategy (Inheritance)    | With Strategy (Pattern)          |
-|------------------------------|----------------------------------|---------------------------------|
-| Algorithm change at runtime   | Requires new object               | Change method on existing object|
-| State preservation            | Lost when switching objects       | Preserved                      |
-| Memory management             | Manual (`delete`)                 | Automatic (`shared_ptr`)         |
-| Open/Closed Principle         | Violated when adding new methods  | Fully supported                 |
-| Code maintainability          | Lower                           | Higher                          |
-| Flexibility                  | Low - fixed at object creation    | High - swap anytime at runtime  |
+| Feature                     | Without Strategy (Inheritance)   | With Strategy (Pattern)          |
+| --------------------------- | -------------------------------- | -------------------------------- |
+| Algorithm change at runtime | Requires new object              | Change method on existing object |
+| State preservation          | Lost when switching objects      | Preserved                        |
+| Open/Closed Principle       | Violated when adding new methods | Fully supported                  |
+| Code maintainability        | Lower                            | Higher                           |
+| Flexibility                 | Low - fixed at object creation   | High - swap anytime at runtime   |
 
 ---
 
