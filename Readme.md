@@ -2,11 +2,10 @@
 
 ## Overview
 
-Welcome to my **Design Patterns & SOLID Principles Learning Repository**!  
-This repo is a personal documentation of my journey learning essential software design concepts.  
-It covers the **SOLID principles** and popular **design patterns** with detailed explanations and C++ code examples, illustrating both good and bad practices.
+Welcome to my **Design Patterns & SOLID Principles Learning Repository**  
+This repository serves as a structured documentation of the design patterns and SOLID principles I have learned and implemented, complete with explanations and practical C++ examples.
 
-My goal is to provide clear notes and practical code to help anyone understand these concepts better and apply them in real-world projects.
+It covers **SOLID principles** and popular **design patterns** with detailed explanations and C++ code examples, illustrating both good and bad practices.
 
 ---
 
@@ -14,54 +13,92 @@ My goal is to provide clear notes and practical code to help anyone understand t
 
 ### 1. Start with the `SOLID` Folder
 
-The `SOLID` folder is where you will find the core principles of software design:
+The `SOLID` folder contains the core principles of good software design:
 
-- For **each principle**, you will find:
-  - A markdown file named `wtf_is_that?.md` (e.g., `Single_Responsibility\wtf_is_that?.md`), which contains **short notes and a brief explanation** of the principle.
-  - Two C++ code files:
-    - `bad_example.cpp` — shows a common **wrong or anti-pattern** usage.
-    - `good_example.cpp` — demonstrates the **correct application** of the principle with clear code examples.
+- For **each principle**, you’ll find:
+  - A markdown file named `wtf_is_that?.md` (e.g., `Single_Responsibility/wtf_is_that?.md`) with **short notes and a brief explanation** of the principle.
+  - Two C++ files:
+    - `bad_example.cpp` : the wrong way
+    - `good_example.cpp` : the correct way (so your future self doesn’t hate you).
 
 **How to study:**
 
-- Read the `wtf_is_that?.md` to understand the theory.
-- Review the `bad_example.cpp` to see what mistakes to avoid.
-- Analyze the `good_example.cpp` to learn how to apply the principle correctly in code.
-- Feel free to compile and run the code to see the difference in practice.
+1. Read the `wtf_is_that?.md` to get the theory.
+2. Look at `bad_example.cpp` to see the typical rookie mistakes.
+3. Check `good_example.cpp` to learn how to apply the principle properly.
+4. Compile and run the code to see the difference. (Instructions below)
 
 ---
 
 ### 2. Move on to the `design_patterns` Folder
 
-This folder dives deeper into behavioral and structural design patterns:
+This folder covers **behavioral**, **structural**, and **creational** design patterns:
 
-- Contains a detailed explanation file: `explain_to_me.md`  
-  This file provides:
-  - A thorough explanation of the pattern.
-  - Discussion on why and when to use it.
-  - Step-by-step walkthroughs of the example code.
+- An explanation file: `explain_to_me.md`  
+  This file contains:
 
-- Two C++ example files for each pattern:
-  - `without_example.cpp` — implementation **without** the pattern applied, showing potential issues or less flexible design.
-  - `with_example.cpp` — implementation **with** the pattern applied, showing how it improves flexibility, maintainability, and design quality.
+  - Why the pattern exists.
+  - When you should (and shouldn’t) use it.
+  - A step-by-step walkthrough of the example code.
+
+- Two `.cpp` files for each pattern:
+  - `without_example.cpp` : shows the "bad" naive approach.
+  - `with_example.cpp` : shows the proper pattern applied.
 
 **How to study:**
 
-- Start by reading the **what we are building** section inside the `explain_to_me.md` to get an overview about the code.
-- Explore `without_example.cpp` and the **without_example** section in `explain_to_me.md` in parallel to see the baseline or common naive implementation.
-- Explore and Study `with_example.cpp` with the **with_example** section in `explain_to_me.md` to understand how applying the pattern improves the design.
-- Run and modify the code to solidify your understanding.
+1. Read the **"what we are building"** section in `explain_to_me.md`.
+2. Compare `without_example.cpp` with the "without" explanation to understand the baseline.
+3. Study `with_example.cpp` with the "with" explanation to see how the pattern improves the design.
+4. Run both versions and notice how much nicer the "with" version is. (Unless you enjoy debugging pain.)
+
+---
+
+## How to Compile & Run the Code
+
+Before you run anything:
+
+- Make sure you have **g++ compiler** installed.  
+  On Windows: "fuck windows"
+  - Install **MinGW** or **MSYS2** and add it to PATH.
+  - Open a terminal (cmd or PowerShell) and type:
+    ```sh
+    g++ --version
+    ```
+    If it prints a version, you’re good to go. If not, go download g++
+- On Linux/Mac:  
+  Usually g++ comes pre-installed. Check with:
+  ```sh
+  g++ --version
+  ```
+
+**To run a `.cpp` file:**
+
+1. Open your terminal.
+2. Navigate to the folder containing the `.cpp` file:
+   ```sh
+   cd path/to/folder
+   ```
+3. Compile the file:
+   ```sh
+   g++ with_example.cpp -o a.exe
+   ```
+4. Run the compiled program:
+   ```sh
+   ./a.exe
+   ```
+   > بس executable اهم حاجة يبقى linux و windows ممكن تشغلها بـ `a.exe` عادي.
 
 ---
 
 ## Final Note
 
-This repository is a **personal documentation** of my learning process.  
-I hope that these notes, explanations, and code samples will be useful to anyone interested in mastering software design principles and patterns.  
+This repository represents my structured approach to studying and documenting software design principles and patterns.  
+Each concept is accompanied by clear explanations and practical C++ examples to bridge the gap between theory and real-world implementation.
 
-Feel free to explore, learn, and adapt these concepts in your projects!
+My objective is to create a resource that is both educational and reusable, for myself and for others who wish to strengthen their understanding of maintainable, scalable, and well-structured software design.
 
 ---
 
-Happy coding!  
+Good luck all !  
 Ahmed Hesham Elsherbeeny
