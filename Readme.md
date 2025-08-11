@@ -87,7 +87,6 @@ Before you run anything:
    ```sh
    ./a.exe
    ```
-   > بس executable اهم حاجة يبقى linux و windows ممكن تشغلها بـ `a.exe` عادي.
 
 ---
 
