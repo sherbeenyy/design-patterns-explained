@@ -29,7 +29,7 @@ In short:
 
 ## Diagram
 
-![Strategy Pattern Diagram](imgs/strategygeneral.png)
+![Strategy Pattern Diagram](imgs/strategypattern.png)
 
 ---
 
