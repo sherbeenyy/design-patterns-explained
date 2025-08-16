@@ -11,18 +11,6 @@ class Lamp
 public:
     void turnOn() { cout << "Lamp is ON\n"; }
     void turnOff() { cout << "Lamp is OFF\n"; }
-    void increaseBrightness()
-    {
-        if (brightness < 100)
-            brightness += 10;
-        cout << "Lamp brightness increased to " << brightness << "%\n";
-    }
-    void decreaseBrightness()
-    {
-        if (brightness > 0)
-            brightness -= 10;
-        cout << "Lamp brightness decreased to " << brightness << "%\n";
-    }
 };
 
 // Command interface
@@ -31,6 +19,7 @@ class ICommand
 public:
     virtual ~ICommand() {}
     virtual void execute() = 0;
+    virtual void undo() = 0;
 };
 
 // Concrete Commands
@@ -41,6 +30,7 @@ class TurnOnCommand : public ICommand
 public:
     TurnOnCommand(Lamp *l) : lamp(l) {}
     void execute() override { lamp->turnOn(); }
+    void undo() override { lamp->turnOff(); }
 };
 
 class TurnOffCommand : public ICommand
@@ -50,27 +40,10 @@ class TurnOffCommand : public ICommand
 public:
     TurnOffCommand(Lamp *l) : lamp(l) {}
     void execute() override { lamp->turnOff(); }
+    void undo() override { lamp->turnOn(); }
 };
 
-class IncreaseBrightnessCommand : public ICommand
-{
-    Lamp *lamp;
-
-public:
-    IncreaseBrightnessCommand(Lamp *l) : lamp(l) {}
-    void execute() override { lamp->increaseBrightness(); }
-};
-
-class DecreaseBrightnessCommand : public ICommand
-{
-    Lamp *lamp;
-
-public:
-    DecreaseBrightnessCommand(Lamp *l) : lamp(l) {}
-    void execute() override { lamp->decreaseBrightness(); }
-};
-
-// Invoker - The Remote Control
+// invoker - The Remote Control
 class RemoteControl
 {
     unordered_map<string, shared_ptr<ICommand>> buttonMap;
@@ -100,21 +73,14 @@ int main()
 
     auto onCmd = make_shared<TurnOnCommand>(&myLamp);
     auto offCmd = make_shared<TurnOffCommand>(&myLamp);
-    auto incCmd = make_shared<IncreaseBrightnessCommand>(&myLamp);
-    auto decCmd = make_shared<DecreaseBrightnessCommand>(&myLamp);
 
     // User assigns commands to colored buttons
-    remote.setCommand("Red", onCmd);
-    remote.setCommand("Green", incCmd);
-    remote.setCommand("Blue", decCmd);
-    remote.setCommand("Yellow", offCmd);
+    remote.setCommand("green", onCmd);
+    remote.setCommand("red", offCmd);
 
     // Simulate button presses
-    remote.pressButton("Red");
-    remote.pressButton("Green");
-    remote.pressButton("Green");
-    remote.pressButton("Blue");
-    remote.pressButton("Yellow");
+    remote.pressButton("green");
+    remote.pressButton("red");
 
     return 0;
 }
