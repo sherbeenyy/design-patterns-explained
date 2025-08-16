@@ -98,6 +98,14 @@ Each concept is accompanied by clear explanations and practical C++ examples to 
 My objective is to create a resource that is both educational and reusable, for myself and for others who wish to strengthen their understanding of maintainable, scalable, and well-structured software design.
 
 ---
+## LICENCE
+ 
+This repository is licensed under the MIT License.
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the material.
+
+See the [LICENSE](LICENSE) file for full details.
+
+---
 
 Good luck all !  
 Ahmed Hesham Elsherbeeny
