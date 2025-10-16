@@ -67,7 +67,7 @@ With the functional Adapter Pattern:
 3.  **Low scalability**: Adding more providers makes the function bloated and hard to read.
 4.  **Violates OCP**: The function is always open for modification.
 
-### 2. [with_adapter_fp.py](./with_example_fp.py) - Functional Adapter Approach
+### 2. [with_example_fp.py](./with_example_fp.py) - Functional Adapter Approach
 
 **Code explanation:**
 
