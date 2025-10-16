@@ -24,9 +24,13 @@ The **Adapter Pattern** is a structural design pattern that allows objects with 
 In short:
 
 > Instead of writing messy `if/else` blocks to handle every different service, you **create an "adapter" for each one**. The rest of your application then communicates with the adapters through a single, standard interface.
+---
 
 ## Diagram
 
+## ![Adapter Pattern FP](imgs/fp.png)
+
+---
 ## Why Not Just Use `if/else` Directly?
 
 Handling each case with `if/else` works for one or two providers, but it quickly leads to **serious headaches**:
