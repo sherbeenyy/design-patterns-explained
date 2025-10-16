@@ -47,7 +47,7 @@ With the functional Adapter Pattern:
 
 ## Diagram
 
-## ![Adapter Pattern FP](imgs/fp.pngpng)
+## ![Adapter Pattern FP](imgs/fp.png)
 
 ---
 ## Understanding the Code
