@@ -28,7 +28,7 @@ In short:
 
 ## Diagram
 
-## ![Adapter Pattern FP](imgs/fp.png)
+## ![Adapter Pattern OOP](imgs/oop.png)
 
 ---
 ## Why Not Just Use `if/else` Directly?
