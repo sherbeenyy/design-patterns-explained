@@ -1,104 +1,73 @@
 #include <iostream>
-#include <string>
 #include <memory>
-
+#include <string>
 using namespace std;
 
-// Strategy interface
-class IpaymentStrategy {
+class IPaymentGateway {
 public:
-    virtual void processPayment(double amount) = 0;
-    virtual ~IpaymentStrategy() = default;
+    virtual void pay(float amount) = 0;
+    virtual ~IPaymentGateway() = default;
 };
 
-// Concrete Strategies
-class CreditCardProcessor : public IpaymentStrategy {
+class CreditCardGateway : public IPaymentGateway {
 public:
-    void processPayment(double amount) override {
-        cout << "Processing credit card algorithm of $" << amount << endl;
+    void pay(float amount) override {
+        cout << "Processing credit card payment of $" << amount << endl;
     }
 };
 
-class PayPalProcessor : public IpaymentStrategy {
+class PayPalGateway : public IPaymentGateway {
 public:
-    void processPayment(double amount) override {
-        cout << "Processing PayPal algorithm of $" << amount << endl;
+    void pay(float amount) override {
+        cout << "Processing PayPal payment of $" << amount << endl;
     }
 };
 
-class CryptoProcessor : public IpaymentStrategy {
+class CryptoGateway : public IPaymentGateway {
 public:
-    void processPayment(double amount) override {
-        cout << "Processing cryptocurrency algorithm of $" << amount << endl;
+    void pay(float amount) override {
+        cout << "Processing Crypto payment of $" << amount << endl;
     }
 };
 
-// Context
-class PaymentProcessor {
+class ApplePayGateway : public IPaymentGateway {
+public:
+    void pay(float amount) override {
+        cout << "Processing Apple Pay payment of $" << amount << endl;
+    }
+};
+
+class CheckoutService {
 private:
-    shared_ptr<IpaymentStrategy> _paymentMethod;
-public:
-    PaymentProcessor(shared_ptr<IpaymentStrategy> method)
-        : _paymentMethod(method) {}
+    shared_ptr<IPaymentGateway> gateway;
 
-    void setPaymentMethod(shared_ptr<IpaymentStrategy> method) {
-        _paymentMethod = method;
+public:
+    void setGateway(shared_ptr<IPaymentGateway> newGateway) {
+        gateway = newGateway;
     }
 
-    void process(double amount) {
-        if (_paymentMethod) {
-            _paymentMethod->processPayment(amount);
-        } else {
-            cout << "No payment method selected!" << endl;
+    void processPayment(float amount) {
+        if (!gateway) {
+            cout << "Error: No payment gateway selected!" << endl;
+            return;
         }
+        gateway->pay(amount);
     }
 };
-
 int main() {
+    CheckoutService checkout;
 
-    //look the idea here that i can change the alogrithm of the proccess the payment with mid process
-    // i can change the payment method at any time actually
-    // thats the strategy pattern in action ;)
-    PaymentProcessor paymentProcessor(nullptr);
-    int choice;
-    double amount;
+    checkout.setGateway(make_shared<CreditCardGateway>());
+    checkout.processPayment(100.0f);
 
-    cout << "Enter the amount: ";
-    cin >> amount;
+    checkout.setGateway(make_shared<PayPalGateway>());
+    checkout.processPayment(200.0f);
 
-    while (true) {
-        cout << "Choose your payment method: " << endl;
-        cout << "1. Credit Card" << endl;
-        cout << "2. PayPal" << endl;
-        cout << "3. Crypto" << endl;
-        cin >> choice;
+    checkout.setGateway(make_shared<CryptoGateway>());
+    checkout.processPayment(300.0f);
 
-        switch (choice) {
-        case 1:
-            paymentProcessor.setPaymentMethod(make_shared<CreditCardProcessor>());
-            break;
-        case 2:
-            paymentProcessor.setPaymentMethod(make_shared<PayPalProcessor>());
-            break;
-        case 3:
-            paymentProcessor.setPaymentMethod(make_shared<CryptoProcessor>());
-            break;
-        default:
-            cout << "Invalid choice. Try again." << endl;
-            continue; // go back to start
-        }
-
-        cout << "Are you sure of that payment method? (reply with Y or y for yes)" << endl;
-        char confirmation;
-        cin >> confirmation;
-
-        if (confirmation == 'y' || confirmation == 'Y') {
-            paymentProcessor.process(amount);
-            break; // exit loop after confirmation
-        } else {
-            cout << "payment method not confirmed" << endl;
-        }
-    }
+    checkout.setGateway(make_shared<ApplePayGateway>());
+    checkout.processPayment(400.0f);
 
     return 0;
 }
